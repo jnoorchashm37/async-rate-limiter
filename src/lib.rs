@@ -1,3 +1,4 @@
+#![feature(duration_constructors)]
 use std::{future::Future, pin::Pin, sync::Arc};
 
 use tokio::{sync::Mutex, task::JoinHandle};
