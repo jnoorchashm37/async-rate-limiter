@@ -1,4 +1,3 @@
-#![feature(duration_constructors)]
 use std::{future::Future, pin::Pin, sync::Arc};
 
 use tokio::{sync::Mutex, task::JoinHandle};
@@ -114,9 +113,9 @@ impl TimeUnit {
         match self {
             TimeUnit::Millisecond(time) => std::time::Duration::from_millis(time),
             TimeUnit::Second(time) => std::time::Duration::from_secs(time),
-            TimeUnit::Minute(time) => std::time::Duration::from_mins(time),
-            TimeUnit::Hour(time) => std::time::Duration::from_hours(time),
-            TimeUnit::Day(time) => std::time::Duration::from_days(time),
+            TimeUnit::Minute(time) => std::time::Duration::from_secs(time * 60),
+            TimeUnit::Hour(time) => std::time::Duration::from_secs(time * 3600),
+            TimeUnit::Day(time) => std::time::Duration::from_secs(time * 86400),
         }
     }
 
